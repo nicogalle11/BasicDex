@@ -29,12 +29,9 @@ selector_text.innerHTML = `Elige la temporada: `;
 link.target = `_blank`;
 link.href = `${poketv}1`;
 link.innerHTML = `¡Mirá la temporada 1 en la página oficial haciendo click acá!`;
-console.log(iframe.width);
-console.log(iframe.style.width);
-//iframe.style.height = `auto`;
+link.style.color = `#F0F0F0`;
 iframe.frameborder = `0`;
 iframe.src = `https://www.youtube.com/embed/uDIoEbbFKAY`
-//iframe.allow = `accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture`;
 
 for (i = 1; i <= 23; i++) {
 	let option = d.createElement(`option`);
@@ -48,7 +45,6 @@ selector.addEventListener(`change`, () => {
 })
 
 function showVideo() {
-	//console.log(selector.value);
 	link.innerHTML = `¡Mirá la temporada ${selector.value} en la página oficial haciendo click acá!`;
 	link.href = poketv + selector.value;
 	switch (selector.value) {
@@ -62,28 +58,28 @@ function showVideo() {
 			iframe.src = `https://www.youtube.com/embed/dWgG3bnVUS0`;
 			break;
 		case `4`:
-			iframe.src = ``;
+			iframe.src = `https://www.youtube.com/embed/VKSn-i2DI8A`;
 			break;
 		case `5`:
-			iframe.src = ``;
+			iframe.src = `https://www.youtube.com/embed/qGJN8-Vp3ks`;
 			break;
 		case `6`:
-			iframe.src = ``;
+			iframe.src = `https://www.youtube.com/embed/s1c4OgsrDLE`;
 			break;
 		case `7`:
-			iframe.src = ``;
+			iframe.src = `https://www.youtube.com/embed/yjDMoNm23EY`;
 			break;
 		case `8`:
-			iframe.src = ``;
+			iframe.src = `https://www.youtube.com/embed/gNPp3IjlW34`;
 			break;
 		case `9`:
 			iframe.src = `https://www.youtube.com/embed/28aplfEJ3SM`;
 			break;
 		case `10`:
-			iframe.src = `https://www.youtube.com/embed/6VJ0cb7nxKc`;
+			iframe.src = `https://www.youtube.com/embed/Cdhi0GFTj7c`;
 			break;
 		case `11`:
-			iframe.src = ``;
+			iframe.src = `https://www.youtube.com/embed/HyE1TBRluLA`;
 			break;
 		case `12`:
 			iframe.src = `https://www.youtube.com/embed/ASNl4Upmh1E`;
@@ -92,10 +88,10 @@ function showVideo() {
 			iframe.src = `https://www.youtube.com/embed/W1yLtd83n0U`;
 			break;
 		case `14`:
-			iframe.src = ``;
+			iframe.src = `https://www.youtube.com/embed/5O8wPZTk7t8`;
 			break;
 		case `15`:
-			iframe.src = ``;
+			iframe.src = `https://www.youtube.com/embed/tW5UYYnB20Q`;
 			break;
 		case `16`:
 			iframe.src = `https://www.youtube.com/embed/7pYFxXq9LX4`;
@@ -123,6 +119,3 @@ function showVideo() {
 			break;
 	}
 }
-
-console.log(iframe.width);
-console.log(iframe.style.width);

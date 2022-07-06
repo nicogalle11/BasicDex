@@ -21,11 +21,11 @@ const pokemonQuery = (pokemon) =>
 	}`;
 
 let favorites;
-onlineTest();
 cargarLocalStorage();
+onlineTest();
 
 search_button.addEventListener(`click`, () =>{
-	pokemonSearch(input.value);
+	pokemonSearch(input.value.toLowerCase());
 })
 
 function pokemonSearch(pokemon) {
@@ -43,8 +43,8 @@ function pokemonSearch(pokemon) {
 			return res.json()
 		})
 		.then(function(json){
-			if(json.cod == `404`) {
-				//notFound();
+			if(json.data.pokemon.id == null) {
+				notFound();
 			} else {
 				let datos = json.data;
 				localStorage.setItem(`lastvisit`, JSON.stringify(datos));
@@ -101,35 +101,39 @@ function mostrarResultado(data) {
 	add_fav.className = `col-8 offset-2 col-sm-6 offset-sm-3 col-md-4 offset-md-4 `;
 	remove_fav.className = `col-8 offset-2 col-sm-6 offset-sm-3 col-md-4 offset-md-4`;
 
+	//SETEANDO LA PALETA DE COLORES SEGÚN TYPE
 
-	//datos.className = `text-center col-12 col-sm-10 offset-sm-1`;
-	//auxiliar.className = `row`;
-	//resumen.className = `col-12 col-lg-6`;
-	//detalles.className = `text-start mb-4 col-10 offset-1 col-md-8 offset-md-2 col-lg-5 m-lg-auto col-xxl-4`;
-	//mapa.className = `col-12 p-0 col-sm-10 offset-sm-1`;
+	let colors = [{name: `bug`,color: `rgba(170,197,54,1)`},{name: `dark`,color: `rgba(86,84,98,1)`},
+			{name: `dragon`,color: `rgba(3,107,98,1)`},{name: `electric`,color: `rgba(245,212,73,1)`},
+			{name: `fairy`,color: `rgba(240,141,234,1)`},{name: `fighting`,color: `rgba(214,60,100,1)`},
+			{name: `fire`,color: `rgba(254,158,82,1)`},{name: `flying`,	color: `rgba(143,168,224,1)`},
+			{name: `ghost`,color: `rgba(104,111,192,1)`},{name: `grass`,color: `rgba(100,185,90,1)`},
+			{name: `ground`,color: `rgba(211,148,102,1)`},{name: `ice`,color: `rgba(114,206,195,1)`},
+			{name: `normal`,color: `rgba(146,155,164,1)`},{name: `poison`,color: `rgba(169,98,202,1)`},
+			{name: `psychic`,color: `rgba(245,112,115,1)`},{name: `rock`,color: `rgba(198,181,138,1)`},
+			{name: `steel`,color: `rgba(87,136,158,1)`},{name: `water`,color: `rgba(103,182,223,1)`}];
 
-	//SETEANDO LA PALETA DE COLORES SEGÚN TEMPERATURA
-/*
-	let paleta = ``,
-		blanco = `rgba(255,255,255,0.8)`, //#FFFFFF
-		celeste = `rgba(92,209,255,0.8)`, //#5CD1FF
-		verde = `rgba(71,255,71,0.8)`, //#47FF47
-		amarillo = `rgba(255,255,92,0.8)`, //#FFFF5C
-		naranja = `rgba(255,173,92,0.8)`, //#FFAD5C
-		rojo = `rgba(255,71,71,0.8)`; //#FF4747
-
-	if (parseInt(data.main.temp) <= 5) {
-		paleta = `linear-gradient(45deg,${blanco},${celeste})`;
-	} else if (data.main.temp <= 15) {
-		paleta = `linear-gradient(45deg,${celeste},${verde})`;
-	} else if (data.main.temp <= 25) {
-		paleta = `linear-gradient(45deg,${verde},${amarillo})`;
-	} else if (data.main.temp <= 30) {
-		paleta = `linear-gradient(45deg,${amarillo},${naranja})`;
-	} else if (data.main.temp > 30) {
-		paleta = `linear-gradient(45deg,${naranja},${rojo})`;
+	if (types.length == 1) {
+		for (let type of types) {
+			for (let color of colors) {
+				if (type.type.name == color.name) {
+					main.style.backgroundColor = color.color;
+				}
+			}
+		}
+	} else {
+		let type1, type2;
+			for (let color of colors) {
+				if (types[0].type.name == color.name){
+					type1 = color.color;
+				}
+				if (types[1].type.name == color.name){
+					type2 = color.color;
+				}				
+			}		
+		main.style.background = `linear-gradient(180deg,${type1},${type2})`;
 	}
-*/
+
 	//AGREGANDO DATOS AL HTML
 	
 	pokemon_name.innerHTML = `#${data.pokemon.id} - ${data.pokemon.name}`;
@@ -161,12 +165,6 @@ function mostrarResultado(data) {
 	type.style.textTransform = `capitalize`;
 	//moveset.style.textTransform = `capitalize`;
 	testFavorite(data, add_fav, remove_fav);
-/*
-	datos.style.background = paleta;
-	titulo.style.background = `url(https://openweathermap.org/img/wn/${data.weather[0].icon}@4x.png) no-repeat`;
-	titulo.style.backgroundPosition = `bottom`;
-	footer.style.background = paleta;
-	*/
 }
 
 function addFavorite(data) {
@@ -219,12 +217,84 @@ function cargarLocalStorage() {
 	}
 }
 
+function notFound() {
+	if (d.querySelector(`#container`)) {
+		d.querySelector(`#container`).remove();
+	}
+	let container = d.createElement(`div`),
+		auxiliar = d.createElement(`div`),
+		error_m1 = d.createElement(`p`),
+		error_m2 = d.createElement(`p`);
+
+	auxiliar.append(error_m1, error_m2);
+	container.append(auxiliar);
+	main.append(container);
+
+	container.className = `row text-center py-5`;
+	auxiliar.className = `error text-center col-12 col-sm-10 offset-sm-1 py-5`;
+	error_m1.className = ``;
+	error_m2.className = `text-center col-lg-10 offset-1`;
+
+	error_m1.innerHTML = `:(`;
+	error_m2.innerHTML = `No se encontró la especie que estás buscando, porfi revisá que esté bien escrita. Recordamos que, por el momento, la búsqueda está limitada a especies pokémon que efectivamente existan y no sean inventadas por usuarixs. Muchas gracias.`;
+
+	error_m1.style.fontSize = `10em`;
+}
+
 function onlineTest() {
 	if (!navigator.onLine) {
-		console.log(`sin conexion`);
-		let texto = d.createElement(`p`);
-		texto.innerHTML = `UY NO TENÉS INTERNET :(`;
-		main.append(texto);
+		cargarLocalStorage();
+		if (d.querySelector(`#container`)) {
+			d.querySelector(`#container`).remove();
+		}
+		d.getElementById(`search`).remove();
+
+		let container = d.createElement(`div`),
+			auxiliar = d.createElement(`div`),
+			error_m1 = d.createElement(`p`),
+			error_m2 = d.createElement(`p`),
+			img = d.createElement(`img`),
+			texto = d.createElement(`p`),
+			input = d.createElement(`input`),
+			button = d.createElement(`button`),
+			answer = d.createElement(`p`),
+			aux = d.createElement(`div`);
+
+		auxiliar.append(error_m1, error_m2);
+		container.append(auxiliar);
+		main.append(container);
+
+		container.className = `row text-center py-5`;
+		auxiliar.className = `error text-center col-12 col-sm-10 offset-sm-1`;
+		error_m1.className = ``;
+		error_m2.className = `text-center col-lg-10 offset-1`;
+		img.className = `col-8 offset-2 col-md-6 offset-md-3 col-lg-4 mx-lg-auto offset-lg-0 col-xl-4 col-xxl-3`;
+		aux.className = `mx-auto col-8 col-sm-6 col-md-4`;
+		input.className =  ``;
+		button.className = ``;
+
+		error_m1.innerHTML = `:(`;
+		error_m2.innerHTML = `¡Uy! ¡No tenés internet! Mientras vamos a ponerte a prueba y ver si te acordás los nombres de tus favoritos. Aparecerán en forma aleatoria ¡Divertite!`;
+		button.innerHTML = `¡Adiviná!`
+		texto.innerHTML = `A ver si hiciste la tarea`;
+
+		error_m1.style.fontSize = `10em`;
+		main.style.background = `linear-gradient(180deg,rgba(255,255,255,0.8),rgba(100,100,100,0.8)`
+
+		let game = favorites[Math.floor(Math.random() * favorites.length)];
+
+		img.src = `${game.pokemon.sprites.front_default}`;
+
+		aux.append(input,button);
+		container.append(img,texto,aux,answer);
+
+		button.addEventListener(`click`, () => {
+			if (game.pokemon.name == input.value.toLowerCase()) {
+				answer.innerHTML = `¡CORRECTO!`;
+			} else {
+				answer.innerHTML = `Incorrecto :(`
+			}
+		});
 	}
 }
 
@@ -235,10 +305,3 @@ window.addEventListener(`offline`, event => {
 window.addEventListener(`online`, event => {
 	console.log(`todo online`);
 });
-
-/*if (!navigator.onLine) {
-	console.log(`sin conexion`);
-	let texto = d.createElement(`p`);
-	texto.innerHTML = `UY NO TENÉS INTERNET :(`;
-	main.append(texto);
-}*/
