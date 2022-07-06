@@ -224,6 +224,9 @@ function notFound() {
 	if (d.querySelector(`#container`)) {
 		d.querySelector(`#container`).remove();
 	}
+	if (d.getElementById(`notFound`)) {
+		d.getElementById(`notFound`).remove();
+	}
 	let container = d.createElement(`div`),
 		auxiliar = d.createElement(`div`),
 		error_m1 = d.createElement(`p`),
