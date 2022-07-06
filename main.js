@@ -60,6 +60,9 @@ function pokemonSearch(pokemon) {
 }
 
 function mostrarResultado(data) {
+	if (d.getElementById(`notFound`)) {
+		d.getElementById(`notFound`).remove();
+	}
 	let types = (data.pokemon.types);
 	let moves = (data.pokemon.moves);
 
@@ -225,6 +228,8 @@ function notFound() {
 		auxiliar = d.createElement(`div`),
 		error_m1 = d.createElement(`p`),
 		error_m2 = d.createElement(`p`);
+
+	container.id = `notFound`;
 
 	auxiliar.append(error_m1, error_m2);
 	container.append(auxiliar);
