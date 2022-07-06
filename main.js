@@ -284,9 +284,13 @@ function onlineTest() {
 		error_m1.innerHTML = `:(`;
 		error_m2.innerHTML = `¡Uy! ¡No tenés internet! Mientras vamos a ponerte a prueba y ver si te acordás los nombres de tus favoritos. Aparecerán en forma aleatoria ¡Divertite!`;
 		button.innerHTML = `¡Adiviná!`
-		texto.innerHTML = `A ver si hiciste la tarea`;
+		texto.innerHTML = `Cuando quieras cambiar, podés refrescar la página para le siguiente.`;
 
 		error_m1.style.fontSize = `10em`;
+		error_m2.style.color = `#000000`;
+		texto.style.color = `#000000`;
+		answer.style.color = `#000000`;
+		error_m1.style.color = `#000000`;
 		main.style.background = `linear-gradient(180deg,rgba(255,255,255,0.8),rgba(100,100,100,0.8)`
 
 		let game = favorites[Math.floor(Math.random() * favorites.length)];
