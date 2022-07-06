@@ -1,0 +1,136 @@
+{
+	"seasons" : [
+			{
+				"id" : 1,
+				"name" : "Pokémon: Liga Añil",
+				"opening" : "",
+				"link" : "",
+			},
+			{
+				"id" : 2,
+				"name" : "Pokémon: Aventuras en las Islas Naranja",
+				"opening" : "",
+				"link" : "",
+			},
+			{
+				"id" : 3,
+				"name" : "Pokémon: Los viajes Johto",
+				"opening" : "",
+				"link" : "",
+			},
+			{
+				"id" : 4,
+				"name" : "Pokémon: Liga de Campeones de Johto",
+				"opening" : "",
+				"link" : "",
+			},
+			{
+				"id" : 5,
+				"name" : "Pokémon Master Quest",
+				"opening" : "",
+				"link" : "",
+			},
+			{
+				"id" : 6,
+				"name" : "Pokémon Advanced",
+				"opening" : "",
+				"link" : "",
+			},
+			{
+				"id" : 7,
+				"name" : "Pokémon Advanced Challenge",
+				"opening" : "",
+				"link" : "",
+			},
+			{
+				"id" : 8,
+				"name" : "Pokémon Advanced Battle",
+				"opening" : "",
+				"link" : "",
+			},
+			{
+				"id" : 9,
+				"name" : "Pokémon Battle Frontier",
+				"opening" : "",
+				"link" : "",
+			},
+			{
+				"id" : 10,
+				"name" : "Pokémon Diamante y Perla",
+				"opening" : "",
+				"link" : "",
+			},
+			{
+				"id" : 11,
+				"name" : "Pokémon DP: Battle Dimension",
+				"opening" : "",
+				"link" : "",
+			},
+			{
+				"id" : 12,
+				"name" : "Pokémon DP: Galactic Battles",
+				"opening" : "",
+				"link" : "",
+			},
+			{
+				"id" : 13,
+				"name" : "Pokémon DP: Los vencedores de la Liga Sinnoh",
+				"opening" : "",
+				"link" : "",
+			},
+			{
+				"id" : 14,
+				"name" : "Pokémon Negro y Blanco",
+				"opening" : "",
+				"link" : "",
+			},
+			{
+				"id" : 15,
+				"name" : "Pokémon BN: Destinos rivales",
+				"opening" : "",
+				"link" : "",
+			},
+			{
+				"id" : 16,
+				"name" : "Pokémon BN: Aventuras en Unova y más allá",
+				"opening" : "",
+				"link" : "",
+			},
+			{
+				"id" : 17,
+				"name" : "Pokémon XY",
+				"opening" : "",
+				"link" : "",
+			},
+			{
+				"id" : 18,
+				"name" : "Pokémon XY: Expediciones en Kalos",
+				"opening" : "",
+				"link" : "",
+			},
+			{
+				"id" : 19,
+				"name" : "Pokémon XYZ",
+				"opening" : "",
+				"link" : "",
+			},
+			{
+				"id" : 20,
+				"name" : "Pokémon Sol y Luna",
+				"opening" : "",
+				"link" : "",
+			},
+			{
+				"id" : 21,
+				"name" : "Pokémon SL: Ultra Aventuras",
+				"opening" : "",
+				"link" : "",
+			},
+			{
+				"id" : 22,
+				"name" : "Pokémon SL: Ultraleyendas",
+				"opening" : "",
+				"link" : "",
+			}
+		]	
+}
