@@ -282,9 +282,32 @@ function onlineTest() {
 		button.className = ``;
 
 		error_m1.innerHTML = `:(`;
-		error_m2.innerHTML = `¡Uy! ¡No tenés internet! Mientras vamos a ponerte a prueba y ver si te acordás los nombres de tus favoritos. Aparecerán en forma aleatoria ¡Divertite!`;
+
+
+		if (!favorites || favorites[0] == null) {
+			console.log(`algo`);
+			error_m2.innerHTML = `¡Uy! ¡No tenés internet! Acá teníamos un juego re copado pero sólo si tenías pokémon agregados a favoritos ¡Llamá a tu compañía y que te devuelvan el dinero!`;
+		} else {
+			error_m2.innerHTML = `¡Uy! ¡No tenés internet! Mientras vamos a ponerte a prueba y ver si te acordás los nombres de tus favoritos. Aparecerán en forma aleatoria ¡Divertite!`;
+			
+			let game = favorites[Math.floor(Math.random() * favorites.length)];
+
+			img.src = `${game.pokemon.sprites.front_default}`;
+
+			aux.append(input,button);
+			container.append(img,texto,aux,answer);
+
+			button.addEventListener(`click`, () => {
+				if (game.pokemon.name == input.value.toLowerCase()) {
+					answer.innerHTML = `¡CORRECTO!`;
+				} else {
+					answer.innerHTML = `Incorrecto :(`
+				}
+			});
+		}
+		
 		button.innerHTML = `¡Adiviná!`
-		texto.innerHTML = `Cuando quieras cambiar, podés refrescar la página para le siguiente.`;
+		texto.innerHTML = `Cuando quieras cambiar, podés refrescar la página para el siguiente.`;
 
 		error_m1.style.fontSize = `10em`;
 		error_m2.style.color = `#000000`;
@@ -293,20 +316,7 @@ function onlineTest() {
 		error_m1.style.color = `#000000`;
 		main.style.background = `linear-gradient(180deg,rgba(255,255,255,0.8),rgba(100,100,100,0.8)`
 
-		let game = favorites[Math.floor(Math.random() * favorites.length)];
 
-		img.src = `${game.pokemon.sprites.front_default}`;
-
-		aux.append(input,button);
-		container.append(img,texto,aux,answer);
-
-		button.addEventListener(`click`, () => {
-			if (game.pokemon.name == input.value.toLowerCase()) {
-				answer.innerHTML = `¡CORRECTO!`;
-			} else {
-				answer.innerHTML = `Incorrecto :(`
-			}
-		});
 	}
 }
 
