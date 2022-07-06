@@ -5,7 +5,7 @@ const d = document;
 let container = d.createElement(`div`);
 container.className = `row`;
 
-if (favorites[0] == null) {
+if (!favorites || favorites[0] == null) {
 	emptyFavs();
 } else {
 	for (let fav of favorites) {
